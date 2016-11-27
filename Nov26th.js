@@ -279,6 +279,16 @@ function ceaser(str1,shift){
   }).join("");
 }
 
+//Solution 2
+function ceaser(str1,shift){
+  return str1.split("").map(function(letter){
+    if(letter ===" "){
+      return letter;
+    }
+    var coded = ((letter.charCodeAt(0)- "a".charCodeAt(0))+shift)%26;
+    return String.fromCharCode("a".charCodeAt(0)+coded)
+  }).join("");
+}
 
 assert(ceaser("abc xyz",3) === "def abc", "Wrongly encrypted");
 
