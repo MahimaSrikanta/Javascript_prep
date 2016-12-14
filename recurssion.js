@@ -90,7 +90,20 @@ following recursive definition: The sum of 1 to N is the sum of 1
 to (N/2) plus the sum of (N/2 + 1) to N. Trace your solution using
 an N of 7.*/
 
+function sum (num) {
+  var result;
+  if (num ===1) {
+  result= num; 
+  }
+  else { 
+    var half = Math.floor(num/2); 
+    var span = num - half; // span is used to "shift" upper range 
+    result=(sum(half) + sum(span)+(half * span) ); 
+    } 
+    return result
+}
 
+sum(6)
 
 /* EX 7.6 Write a recursive method that returns the value of N! (N factorial)
 using the definition given in this chapter. Explain why you would
