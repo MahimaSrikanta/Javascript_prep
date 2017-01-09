@@ -173,3 +173,166 @@ for(var i=0,j=result.length-1;i<= j; i++,j--){
    
 // keep this function call here 
 Palindrome("rotor plus three");
+/*Challenge
+Using the JavaScript language, have the function ThirdGreatest(strArr) take the array of strings stored in strArr and return the third largest word within in. So for example: if strArr is ["hello", "world", "before", "all"] your output should be world because "before" is 6 letters long, and "hello" and "world" are both 5, but the output should be world because it appeared as the last 5 letter word in the array. If strArr was ["hello", "world", "after", "all"] the output should be after because the first three words are all 5 letters long, so return the last one. The array will have at least three strings and each string will only contain letters. 
+Sample Test Cases
+Input:"coder","byte","code"
+Output:"code"
+
+Input:"abc","defg","z","hijk"
+Output:"abc"
+*/
+
+function rd(array){
+  
+  
+  var x =0;
+  while (x<=2){
+    var max= array[0];
+    for(var i=0;i<array.length;i++){
+     
+      if(array[i].length > max.length){
+        max= array[i];
+      }
+    }
+    var index = array.indexOf(max);
+    var result= array.splice(index,1);
+    x++;
+  }
+  return result[0];
+}
+
+rd(["coder","byte","code"]);
+
+/*Challenge
+Using the JavaScript language, have the function PowersofTwo(num) take the num parameter being passed which will be an integer and return the string true if it's a power of two. If it's not return the string false. For example if the input is 16 then your program should return the string true but if the input is 22 then the output should be the string false. 
+Sample Test Cases
+Input:4
+Output:"true"
+
+Input:124
+Output:"false"
+*/
+
+
+function power(num){
+  for(var i =0;i< Math.floor(Math.sqrt(num));i++){
+    if(Math.pow(2,i) === num){
+      return true;
+    }
+    
+  }
+  return false;
+  
+}
+
+/*Challenge
+Using the JavaScript language, have the function AdditivePersistence(num) take the num parameter being passed which will always be a positive integer and return its additive persistence which is the number of times you must add the digits in num until you reach a single digit. For example: if num is 2718 then your program should return 2 because 2 + 7 + 1 + 8 = 18 and 1 + 8 = 9 and you stop at 9. 
+Sample Test Cases
+Input:4
+Output:0
+
+Input:19
+Output:2
+*/
+function AdditivePersistence(num) { 
+  var value= String(num).split("");
+  var count=0;
+  while(value.length >1){
+    var result =0;
+    for(var i=0;i<value.length;i++){
+      result+= parseInt(value[i]);
+    }
+    count++;
+    value= String(result).split("");
+  }
+  return count;
+}
+
+AdditivePersistence(19)
+
+/*Challenge
+Using the JavaScript language, have the function MultiplicativePersistence(num) take the num parameter being passed which will always be a positive integer and return its multiplicative persistence which is the number of times you must multiply the digits in num until you reach a single digit. For example: if num is 39 then your program should return 3 because 3 * 9 = 27 then 2 * 7 = 14 and finally 1 * 4 = 4 and you stop at 4. 
+Sample Test Cases
+Input:4
+Output:0
+
+Input:25
+Output:2
+*/
+function MultiplicativePersistence(num) { 
+  var value= String(num).split("");
+  var count=0;
+  while(value.length >1){
+    var result =1;
+    for(var i=0;i<value.length;i++){
+      result*= parseInt(value[i]);
+    }
+    count++;
+    value= String(result).split("");
+  }
+  return count;
+}
+MultiplicativePersistence(5);
+
+/*Challenge
+Using the JavaScript language, have the function OffLineMinimum(strArr) take the strArr parameter being passed which will be an array of integers ranging from 1...n and the letter "E" and return the correct subset based on the following rules. The input will be in the following format: ["I","I","E","I",...,"E",...,"I"] where the I's stand for integers and the E means take out the smallest integer currently in the whole set. When finished, your program should return that new set with integers separated by commas. For example: if strArr is ["5","4","6","E","1","7","E","E","3","2"] then your program should return 4,1,5. 
+Sample Test Cases
+Input:"1","2","E","E","3"
+Output:"1,2"
+
+Input:"4","E","1","E","2","E","3","E"
+Output:"4,1,2,3"
+*/
+
+
+function OffLineMinimum(strArr){
+  var temp =[];
+  var result=[];
+  for(var i =0;i<strArr.length;i++){
+    if(strArr[i] !=="E"){
+      temp.push(strArr[i]);
+    }
+    else{
+      temp.sort(function(a,b){
+        return a-b;
+      });
+      result.push(temp.shift());
+    }
+  }
+  return String(result);
+}
+
+OffLineMinimum(["5","4","6","E","1","7","E","E","3","2"]);
+
+/*Challenge
+Using the JavaScript language, have the function ChangingSequence(arr) take the array of numbers stored in arr and return the index at which the numbers stop increasing and begin decreasing or stop decreasing and begin increasing. For example: if arr is [1, 2, 4, 6, 4, 3, 1] then your program should return 3 because 6 is the last point in the array where the numbers were increasing and the next number begins a decreasing sequence. The array will contain at least 3 numbers and it may contains only a single sequence, increasing or decreasing. If there is only a single sequence in the array, then your program should return -1. Indexing should begin with 0. 
+Sample Test Cases
+Input:-4, -2, 9, 10
+Output:-1
+
+Input:5, 4, 3, 2, 10, 11
+Output:3
+*/
+function ChangingSequence(arr){
+  var dec = false;
+  var inc = false;
+  for(var i=0;i<arr.length-1;i++){
+    if((arr[i]> arr[i+1]) &&(!dec)){
+      
+      inc=true;
+    }
+    else if ((arr[i]> arr[i+1]) && (dec)){
+      return i;
+    }
+    else if((arr[i]<arr[i+1])&&(!inc)){
+      dec= true;
+    }
+    else if((arr[i]<arr[i+1])&&(inc)){
+      return i;
+    }
+  }
+  return -1;
+}
+
+ChangingSequence([-4, -2, 9, 10])
