@@ -31,7 +31,30 @@ function thirdLargest(array){
 
 assert((thirdLargest([3,5,1,7,9,3,1])) === '5', "Not the 3rd largest number");
 
+//dasherizer
 
+function dash(num){
+  var value = String(num);
+  var result =[]; 
+  for(var i=0;i<value.length;i++){
+    if((value[i]%2 !==0)){
+     result.push("-",value[i],"-");
+     
+    }
+    else{
+      result.push(value[i]);
+    }
+  }
+  if( result[0] === "-"){
+    result.splice(0,1)
+  }
+  if(result[result.length-1] === "-"){
+    result.splice(result.length-1,1)
+  }
+    
+  return result.join("").replace(/--/g,"-");
+}
+dash(32233);
 
 /* Q17 Write a method that returns the `n`th prime number. Recall that only
 numbers greater than 1 can be prime.*/
