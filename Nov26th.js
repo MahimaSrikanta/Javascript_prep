@@ -56,6 +56,32 @@ function dash(num){
 }
 dash(32233);
 
+//scramble
+
+function scramble(str,pos){
+  var result="";
+  
+for(var i=0;i<pos.length;i++){
+  result+= str[pos[i]];
+}
+return result
+}
+
+scramble("markov", [5, 3, 1, 4, 2, 0])
+
+//isPrime
+
+function isPrime(number){
+  for(var i=2;i<=Math.sqrt(number);i++){
+    if(number%i ===0){
+      return false;
+    }
+  }
+  return true;
+}
+
+isPrime(16)
+
 /* Q17 Write a method that returns the `n`th prime number. Recall that only
 numbers greater than 1 can be prime.*/
 
@@ -156,23 +182,7 @@ function captitalize(string1){
 
 assert(captitalize("i am mahima") === "I Am Mahima", "Not properly capitalized")
 
-/* Q 15 Write a method that takes in a string and an array of indices in the
-string. Produce a new string, which contains letters from the input
-string in the order specified by the indices of the array of indices.*/
 
-//Solution
-function scramble(str1,array){
-  var result =[];
-  str1.split("").forEach(function(letter,index){
-    result[array[index]] = letter;
-  })
-  
-  return result.join("");
-  
-}
-
-
-assert( scramble("markov", [5, 3, 1, 4, 2, 0]) === "vroakm","Word not scramblled")
 
 /* Q16 Write a method that takes in an integer (greater than one) and
 returns true if it is prime; otherwise return false.*/
